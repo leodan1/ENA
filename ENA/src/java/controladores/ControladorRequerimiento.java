@@ -37,23 +37,29 @@ public class ControladorRequerimiento extends HttpServlet {
                  break;
         }
          }else{
-             response.sendRedirect("ingresarRequerimiento.jsp?msj=Acceso Denegado");
+             response.sendRedirect("IngresarRequerimiento.jsp?msj=Acceso Denegado");
          }
     }
     
     private void registrar(HttpServletRequest request, HttpServletResponse response) throws IOException{
           try{
-            //int id = Integer.parseInt(request.getParameter("id").trim());
             int id = 10;
             int gerencia = Integer.parseInt(request.getParameter("gerencia"));
             int departamento = Integer.parseInt(request.getParameter("departamento"));
             int asigna = Integer.parseInt(request.getParameter("asigna"));
             int encargado = Integer.parseInt(request.getParameter("encargado"));
             String requerimientoo = request.getParameter("requerimientoo");
+   
             
+            System.out.println(request.getParameter("gerencia"));
+            System.out.println(request.getParameter("departamento"));
+            System.out.println(request.getParameter("asigna"));
+            System.out.println(request.getParameter("encargado"));
+            
+
             if(gerencia<1||departamento<1||asigna<1||encargado<1||requerimientoo.equals(""))
             {
-                response.sendRedirect("ingresarRequerimiento.jsp?msj=datos incorrectos");
+                response.sendRedirect("IngresarRequerimiento.jsp?msj=datos incorrectos");
             }else{
                 GerenciaDAO gd = new GerenciaDAO();
                 Requerimiento nuevoRequerimiento = new Requerimiento (id,gerencia,departamento,asigna,encargado,
@@ -64,9 +70,9 @@ public class ControladorRequerimiento extends HttpServlet {
                 //if(rd.obtenerRequerimiento(nuevoRequerimiento.getId())==null){
                     int respuesta = rd.registrar(nuevoRequerimiento);
                     if(respuesta==1){
-                    response.sendRedirect("ingresarRequerimiento.jsp?msj=Requerimiento Registrado Correctamente");
+                    response.sendRedirect("IngresarRequerimiento.jsp?msj=Requerimiento Registrado Correctamente");
                     }else{
-                    response.sendRedirect("ingresarRequerimiento.jsp?msj=La requerimiento no se pudo ingresar"); // For input String: ""
+                    response.sendRedirect("IngresarRequerimiento.jsp?msj=La requerimiento no se pudo ingresar"); // For input String: ""
                     }
                 //}else{
                    // response.sendRedirect("ingresarRequerimiento.jsp?msj=El Codigo ya existe");
@@ -74,14 +80,16 @@ public class ControladorRequerimiento extends HttpServlet {
             
             }
            }catch(IOException e){
-               response.sendRedirect("ingresarRequerimiento.jsp?msj="+e.getMessage());
+               response.sendRedirect("IngresarRequerimiento.jsp?msj="+e.getMessage());
            } catch (NumberFormatException e) {
-               response.sendRedirect("ingresarRequerimiento.jsp?msj="+e.getMessage());
+               response.sendRedirect("IngresarRequerimiento.jsp?msj="+e.getMessage());
         } catch (SQLException e) {
-            response.sendRedirect("ingresarRequerimiento.jsp?msj="+e.getMessage());
+            response.sendRedirect("IngresarRequerimiento.jsp?msj="+e.getMessage());
         }
       
-    }
+        }
+    
+   
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

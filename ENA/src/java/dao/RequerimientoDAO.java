@@ -4,14 +4,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import modelos.Gerencia;
 import modelos.Requerimiento;
 
 
 public class RequerimientoDAO extends Conexion {
     public int registrar(Requerimiento requerimiento) throws SQLException{
         try{
-            String sentencia ="Insert into requerimiento values (DEFAULT,?,?,?,?,?,0)";
+            String sentencia ="Insert into requerimiento values (DEFAULT,?,?,?,?,?)";
          
             Conexion();
             PreparedStatement ps = obtenerPS(sentencia);

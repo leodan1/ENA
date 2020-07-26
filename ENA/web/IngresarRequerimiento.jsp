@@ -1,3 +1,5 @@
+<%@page import="modelos.Requerimiento"%>
+<%@page import="dao.RequerimientoDAO"%>
 <%@page import="dao.EncargadoDAO"%>
 <%@page import="modelos.Encargado"%>
 <%@page import="dao.DepartamentoDAO"%>
@@ -22,6 +24,7 @@
              <div class="form-group text-center">
                     <p><strong>Ingresar Requerimiento</strong></p>
                 </div>
+            
             <label>Gerencia:</label>
                         <select name="gerencia" class="form-control">
                             <option value="0">Seleccione</option>
@@ -40,6 +43,7 @@
                         </select>
                         <label>Asignar:</label>
                         <select name="asigna" class="form-control">
+                            <option value="0">Seleccione</option>
                             <% ArrayList<Asignar> asignados = new AsignarDAO().obtenerAsignados(); 
                             for(Asignar a:asignados){%>
                             <option value="<%= a.getId() %>"><%= a %></option>
@@ -53,10 +57,11 @@
                             <option value="<%= e.getId() %>"><%= e %></option>
                             <% } %>
                         </select>
-                    <br>
+                                                             
                     <label>Requerimiento:</label>
                     <textarea class="form-control" cols="20" rows="5" name="requerimientoo"></textarea>
                     <br>
+            
             <input class="btn btn-danger btn-block" type="submit" value="registrar">
             <input type="hidden" name="accion" value="1"/>
             <br>
