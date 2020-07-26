@@ -1,0 +1,10 @@
+.container{
+    background: lightsteelblue;
+    border-radius: 10px;
+    padding: 25px;
+    margin-top: 50px;
+}
+
+.Body {
+    background: darkorange;
+}
